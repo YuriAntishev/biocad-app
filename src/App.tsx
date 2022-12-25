@@ -121,8 +121,7 @@ const App: React.FC = () => {
                   },
                 ]}
               />
-              <div>Найдите свою книгу</div>
-
+              <div>Найти книгу</div>
               <Tooltip
                 open={searchType === "" ? true : false}
                 color="blue"
