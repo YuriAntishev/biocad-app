@@ -11,14 +11,18 @@ import {
   Menu,
   Button,
   Dropdown,
-  MenuProps,
 } from "antd";
 import { AlignLeftOutlined } from "@ant-design/icons";
-import { leftMenuItems } from "./data/MenuItems";
+import { leftMenuItems, items } from "./data/MenuItems";
 import { arrayBookData, BookData } from "./data/api";
 import {
   SearchContainer,
+  HamburgerContainer,
+  ColMobile,
+  ColDesktop,
   UserAndHamburgerContainer,
+  UserAndHamburgerContainerMobile,
+  UserContainer,
   HeaderContainer,
   StyledCard,
   StyledCol,
@@ -31,25 +35,6 @@ import AV from "./img/avatar.png";
 const { Content } = Layout;
 const { Meta } = Card;
 const { Search } = Input;
-
-const items: MenuProps["items"] = [
-  {
-    label: <div>Главная</div>,
-    key: "0",
-  },
-  {
-    label: <div>Новости библиотеки</div>,
-    key: "1",
-  },
-  {
-    label: <div>Сотрудники библиотеки</div>,
-    key: "2",
-  },
-  {
-    label: <div>Мероприятия библиотеки</div>,
-    key: "3",
-  },
-];
 
 const App: React.FC = () => {
   const [results, setResults] = useState<BookData[]>(arrayBookData);
@@ -81,17 +66,27 @@ const App: React.FC = () => {
           </Col>
         </Row>
         <Row style={{ background: "#001529" }}>
-          <Dropdown menu={{ items }} trigger={["click"]}>
-            <Button>
-              <AlignLeftOutlined />
-            </Button>
-          </Dropdown>
-          <Col span={24}>
+          <ColDesktop span={24}>
             <UserAndHamburgerContainer>
               <div>User Name</div>
               <Avatar style={{ float: "right", margin: "13px" }} src={AV} />
             </UserAndHamburgerContainer>
-          </Col>
+          </ColDesktop>
+          <ColMobile span={24}>
+            <UserAndHamburgerContainerMobile>
+              <HamburgerContainer>
+                <Dropdown menu={{ items }} trigger={["click"]}>
+                  <Button>
+                    <AlignLeftOutlined />
+                  </Button>
+                </Dropdown>
+              </HamburgerContainer>
+              <UserContainer>
+                <div>User Name</div>
+                <Avatar style={{ float: "right", margin: "13px" }} src={AV} />
+              </UserContainer>
+            </UserAndHamburgerContainerMobile>
+          </ColMobile>
         </Row>
         <Row style={{ background: "#001529" }}>
           <Col span={24}>
@@ -118,8 +113,7 @@ const App: React.FC = () => {
         <Layout style={{ padding: "0 24px 24px" }}>
           <Content
             style={{
-              padding: 24,
-              margin: 20,
+              marginTop: 20,
               minHeight: 280,
             }}
           >

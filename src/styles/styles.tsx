@@ -8,16 +8,23 @@ export const StyledCard = styled(Card)`
     width: 90%;
     font-size: 12px;
     .ant-card-head-title {
-      font-size: 16px;
+      font-size: 100%;
       text-align: center;
       overflow: hidden;
       white-space: normal;
+
+      @media (min-width: 0px) and (max-width: 420px) {
+        font-size: 110%;
+      }
     }
     .ant-card-meta-title {
-      font-size: 16px;
+      font-size: 120%;
       text-align: center;
       overflow: hidden;
       white-space: normal;
+      @media (min-width: 0px) and (max-width: 420px) {
+        font-size: 130%;
+      }
     }
   }
 `;
@@ -30,11 +37,31 @@ export const StyledHeader = styled(Header)`
   }
 `;
 
+export const ColDesktop = styled(Col)`
+  &&& {
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+`;
+
+export const ColMobile = styled(Col)`
+  &&& {
+    @media (max-width: 1024px) {
+      display: block;
+    }
+    @media (min-width: 1025px) {
+      display: none;
+    }
+  }
+`;
+
 export const HeaderContainer = styled.div`
   &&& {
     display: flex;
     color: white;
     font-size: 35px;
+    text-align: center;
     justify-content: space-around;
   }
 `;
@@ -42,11 +69,26 @@ export const HeaderContainer = styled.div`
 export const SearchContainer = styled.div`
   &&& {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
+    color: white;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    @media (max-width: 550px) {
+      gap: 0px;
+    }
+  }
+`;
+
+export const UserAndHamburgerContainerMobile = styled.div`
+  &&& {
+    display: flex;
     color: white;
     height: 55px;
     font-size: 20px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 `;
@@ -61,9 +103,25 @@ export const UserAndHamburgerContainer = styled.div`
   }
 `;
 
+export const HamburgerContainer = styled.div`
+  &&& {
+    margin-left: 20px;
+  }
+`;
+
+export const UserContainer = styled.div`
+  &&& {
+    display: flex;
+    color: white;
+    height: 55px;
+    font-size: 20px;
+    justify-content: flex-end;
+  }
+`;
+
 export const StyledSider = styled(Sider)`
   &&& {
-    @media (max-width: 1450px) {
+    @media (max-width: 1024px) {
       display: none;
     }
   }
@@ -71,8 +129,6 @@ export const StyledSider = styled(Sider)`
 
 export const StyledRow = styled(Row)`
   &&& {
-    margin-left: 60px;
-    margin-right: 60px;
     display: flex;
     flex-flow: row wrap;
     min-width: 0;
@@ -86,18 +142,23 @@ export const StyledCol = styled(Col)`
     width: 25%;
     margin-bottom: 3%;
 
-    @media (max-width: 1600px) {
+    @media (min-width: 1250px) and (max-width: 1440px) {
+      flex-basis: 20%;
+      width: 20%;
+    }
+
+    @media (min-width: 800px) and (max-width: 1250px) {
       flex-basis: 25%;
-      width: 25%;
+      width: 20%;
     }
 
-    @media (max-width: 1450px) {
+    @media (min-width: 600px) and (max-width: 800px) {
       flex-basis: 30%;
-      width: 35%;
+      width: 20%;
     }
 
-    @media (max-width: 1250px) {
-      flex-basis: 40%;
+    @media (max-width: 600px) {
+      flex-basis: 45%;
       width: 45%;
     }
   }

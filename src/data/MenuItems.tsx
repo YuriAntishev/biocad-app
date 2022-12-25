@@ -1,3 +1,4 @@
+import { MenuProps } from "antd";
 import {
   NotificationOutlined,
   UserOutlined,
@@ -25,5 +26,24 @@ export const leftMenuItems = [
     key: "libraryActivities",
     label: <div>Мероприятия библиотеки</div>,
     icon: <BookOutlined />,
+  },
+];
+
+export const items: MenuProps["items"] = [
+  {
+    label: <div>Главная</div>,
+    key: "0",
+  },
+  {
+    label: <div>Новости библиотеки</div>,
+    key: "1",
+  },
+  {
+    label: <div>Сотрудники библиотеки</div>,
+    key: "2",
+  },
+  {
+    label: <div>Мероприятия библиотеки</div>,
+    key: "3",
   },
 ];
