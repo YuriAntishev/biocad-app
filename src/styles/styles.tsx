@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { Card, Row, Col, Layout } from "antd";
+import { Card, Row, Col, Layout, Input } from "antd";
 
 const { Header, Sider } = Layout;
+const { Search } = Input;
 
 export const StyledCard = styled(Card)`
   &&& {
@@ -26,6 +27,12 @@ export const StyledCard = styled(Card)`
         font-size: 130%;
       }
     }
+  }
+`;
+
+export const StyledSearch = styled(Search)`
+  &&& {
+    background-color: ${({ disabled }) => (disabled ? "white" : "white")};
   }
 `;
 
@@ -70,14 +77,15 @@ export const SearchContainer = styled.div`
   &&& {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
     color: white;
     font-size: 20px;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    @media (max-width: 550px) {
-      gap: 0px;
+    margin: 15px;
+    @media (min-width: 800px) {
+      gap: 30px;
+      flex-direction: row;
     }
   }
 `;
@@ -138,7 +146,7 @@ export const StyledRow = styled(Row)`
 
 export const StyledCol = styled(Col)`
   &&& {
-    flex-basis: 20%;
+    flex-basis: 17%;
     width: 25%;
     margin-bottom: 3%;
 

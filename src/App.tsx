@@ -6,10 +6,11 @@ import {
   Row,
   Card,
   Avatar,
-  Input,
+  Tooltip,
   Layout,
   Menu,
   Button,
+  Select,
   Dropdown,
 } from "antd";
 import { AlignLeftOutlined } from "@ant-design/icons";
@@ -25,6 +26,7 @@ import {
   UserContainer,
   HeaderContainer,
   StyledCard,
+  StyledSearch,
   StyledCol,
   StyledRow,
   StyledSider,
@@ -34,21 +36,34 @@ import AV from "./img/avatar.png";
 
 const { Content } = Layout;
 const { Meta } = Card;
-const { Search } = Input;
 
 const App: React.FC = () => {
   const [results, setResults] = useState<BookData[]>(arrayBookData);
   const [showResults, setShowResults] = useState(false);
+  const [searchType, setSearchType] = useState<string>("");
+
+  const handleChange = (value: string) => {
+    setSearchType(value);
+  };
 
   const onSearchLike: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.target;
     const searchText = value.toLowerCase();
-    const filteredValue = arrayBookData.filter(
-      (x: BookData) =>
-        x.name.toLowerCase().includes(searchText) ||
+    let filteredValue: BookData[];
+
+    if (searchType === "name") {
+      filteredValue = arrayBookData.filter((x: BookData) =>
+        x.name.toLowerCase().includes(searchText)
+      );
+      setResults(filteredValue);
+    }
+
+    if (searchType === "author") {
+      filteredValue = arrayBookData.filter((x: BookData) =>
         x.author.toLowerCase().includes(searchText)
-    );
-    setResults(filteredValue);
+      );
+      setResults(filteredValue);
+    }
   };
 
   useEffect(() => {
@@ -91,13 +106,37 @@ const App: React.FC = () => {
         <Row style={{ background: "#001529" }}>
           <Col span={24}>
             <SearchContainer>
-              <div>Find Your Book Of Choice</div>
-              <Search
-                placeholder="find a book"
-                onChange={onSearchLike}
-                style={{ width: 300 }}
-                allowClear
+              <Select
+                placeholder="Выбрать категорию"
+                style={{ width: 200 }}
+                onChange={handleChange}
+                options={[
+                  {
+                    value: "name",
+                    label: "Название",
+                  },
+                  {
+                    value: "author",
+                    label: "Автор",
+                  },
+                ]}
               />
+              <div>Найдите свою книгу</div>
+
+              <Tooltip
+                open={searchType === "" ? true : false}
+                color="blue"
+                placement="bottomLeft"
+                title="Чтобы воспользоваться поиском, выберите категорию поиска"
+              >
+                <StyledSearch
+                  placeholder="Найти книгу"
+                  disabled={searchType === "" ? true : false}
+                  onChange={onSearchLike}
+                  style={{ width: 300 }}
+                  allowClear
+                />
+              </Tooltip>
             </SearchContainer>
           </Col>
         </Row>
