@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, ChangeEventHandler } from "react";
 import "./index.css";
 import {
@@ -70,7 +69,7 @@ const App: React.FC = () => {
     if (results.length > 0 && !showResults) setShowResults(true);
 
     if (results.length <= 0) setShowResults(false);
-  }, [JSON.stringify(results)]);
+  }, [results]);
 
   return (
     <Layout>
