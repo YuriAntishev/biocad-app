@@ -16,9 +16,6 @@ Implemented an application with responsive design and with the ability to LIKE-s
 
 To expand the name and author of a book you need to click on the title or Author name or just hover on them on the Desktop to see the Tooltip.
 
-#### Demonstration
-
-[![example3.png](https://i.postimg.cc/76RtnCNS/example3.png)](https://postimg.cc/47z1Jxq3)
 ## Available Scripts
 
 To start the application, you you need to run:
