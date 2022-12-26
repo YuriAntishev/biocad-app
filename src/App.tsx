@@ -11,6 +11,7 @@ import {
   Button,
   Select,
   Dropdown,
+  Typography,
 } from "antd";
 import { AlignLeftOutlined } from "@ant-design/icons";
 import { leftMenuItems, items } from "./data/MenuItems";
@@ -24,6 +25,7 @@ import {
   UserAndHamburgerContainerMobile,
   UserContainer,
   HeaderContainer,
+  StyledImg,
   StyledCard,
   StyledSearch,
   StyledCol,
@@ -35,6 +37,7 @@ import AV from "./img/avatar.png";
 
 const { Content } = Layout;
 const { Meta } = Card;
+const { Text } = Typography;
 
 const App: React.FC = () => {
   const [results, setResults] = useState<BookData[]>(arrayBookData);
@@ -150,21 +153,61 @@ const App: React.FC = () => {
         <Layout style={{ padding: "0 24px 24px" }}>
           <Content
             style={{
-              marginTop: 20,
+              marginTop: 60,
               minHeight: 280,
             }}
           >
             <StyledRow>
               {showResults &&
-                results?.map(({ id, img, name, author }) => {
+                results?.map(({ id, img, name, author, ellipsis }) => {
                   return (
                     <StyledCol key={id}>
                       <StyledCard
-                        title={name}
+                        title={
+                          <Text
+                            style={ellipsis ? { width: 100 } : undefined}
+                            onClick={() =>
+                              setResults((prev) => {
+                                const clonedArray = JSON.parse(
+                                  JSON.stringify(prev)
+                                );
+                                return clonedArray.map((book: BookData) => {
+                                  if (book.id === id) {
+                                    book.ellipsis = !book.ellipsis;
+                                  }
+                                  return book;
+                                });
+                              })
+                            }
+                            ellipsis={ellipsis ? { tooltip: name } : false}
+                          >
+                            {name}
+                          </Text>
+                        }
                         hoverable
-                        cover={<img alt="book" src={img} />}
+                        cover={<StyledImg alt="book" src={img} />}
                       >
-                        <Meta title={author} />
+                        <Meta title={
+                          <Text
+                          style={ellipsis ? { width: 100 } : undefined}
+                          onClick={() =>
+                            setResults((prev) => {
+                              const clonedArray = JSON.parse(
+                                JSON.stringify(prev)
+                              );
+                              return clonedArray.map((book: BookData) => {
+                                if (book.id === id) {
+                                  book.ellipsis = !book.ellipsis;
+                                }
+                                return book;
+                              });
+                            })
+                          }
+                          ellipsis={ellipsis ? { tooltip: author } : false}
+                        >
+                          {author}
+                        </Text>
+                          } />
                       </StyledCard>
                     </StyledCol>
                   );

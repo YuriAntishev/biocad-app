@@ -6,12 +6,19 @@ Implemented an application with responsive design and with the ability to LIKE-s
 
 ### Desktop
 
-[![example.png](https://i.postimg.cc/Zn5yxDW9/example.png)](https://postimg.cc/xJBC05yY)
+[![example.png](https://i.postimg.cc/m22HRd3p/example.png)](https://postimg.cc/kDz4vvpW)
 
 ### Mobile
 
-[![ex2.png](https://i.postimg.cc/hG7FfSMv/ex2.png)](https://postimg.cc/4KZ20RDR)
+[![example2.png](https://i.postimg.cc/HnSjVg0Z/example2.png)](https://postimg.cc/SYMmvHvC)
 
+### Expand or Tooltip
+
+To expand the name and author of a book you need to click on the title or Author name or just hover on them on the Desktop to see the Tooltip.
+
+#### Demonstration
+
+[![example3.png](https://i.postimg.cc/76RtnCNS/example3.png)](https://postimg.cc/47z1Jxq3)
 ## Available Scripts
 
 To start the application, you you need to run:

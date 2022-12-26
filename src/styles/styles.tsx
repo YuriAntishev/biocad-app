@@ -32,7 +32,12 @@ export const StyledCard = styled(Card)`
 
 export const StyledSearch = styled(Search)`
   &&& {
-    background-color: ${({ disabled }) => (disabled ? "white" : "white")};
+    .ant-input-affix-wrapper-disabled {
+      background-color: white;
+    }
+    .ant-input-group-addon {
+      background-color: white;
+    }
   }
 `;
 
@@ -124,6 +129,20 @@ export const UserContainer = styled.div`
     height: 55px;
     font-size: 20px;
     justify-content: flex-end;
+  }
+`;
+
+export const StyledImg = styled.img`
+  &&& {
+    height: 250px;
+
+    @media (min-width: 1400px) and (max-width: 1850px) {
+      height: 300px;
+    }
+
+    @media (min-width: 1850px) and (max-width: 2850px) {
+      height: 400px;
+    }
   }
 `;
 
